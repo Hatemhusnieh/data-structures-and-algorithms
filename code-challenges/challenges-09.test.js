@@ -10,6 +10,8 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
+  let x = arr.sort();
+  return x[x.length-1];
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,6 +28,7 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 
 const getCourseKeys = (obj) => {
   // Solution code here...
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,12 +41,13 @@ Write a function named checkValues that takes in an object and a value and retur
 
 const checkValues = (obj, value) => {
   // Solution code here...
+  return Object.values(obj).includes(value);
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
-You are given an object with names and their coresponding phone numbers that looks like this:
+You are given an object with names and their corresponding phone numbers that looks like this:
 {
   'Grace Hopper': '222-303-5938',
   'Ada Lovelace': '222-349-9842',
@@ -61,6 +65,13 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 const updateNumbers = (obj) => {
   // Solution code here...
+  let keys = Object.keys(obj);
+  let values = Object.values(obj);
+  let res = [];
+  for(let i=0; i<keys.length; i++){
+    res.push(`${keys[i]}: ${values[i]}`);
+  }
+  return res;
 };
 
 
@@ -117,6 +128,9 @@ const characters = [
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
+  arr.map(elm =>{
+    houses.push(elm.house);
+  });
   return houses;
 };
 
@@ -134,7 +148,11 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-
+  for(let i=0; i<arr.length; i++){
+    if(Object.values(arr[i]).includes(character)){
+      return (arr[i].children ? true : false);
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
