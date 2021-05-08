@@ -6,12 +6,14 @@ CHALLENGE 1 - Review
 Write a function that finds the maximum value in an array
 using the 'reduce' method.
 
-E.g. [4,2,7,5,9,2] -> 9
+E.g. [4,,2.7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
-  let x = arr.sort();
-  return x[x.length-1];
+  return arr.reduce((acc, elm) => {
+    if (acc < elm) {acc = elm;}
+    return acc;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
