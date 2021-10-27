@@ -18,9 +18,10 @@ Becomes:
 ]
 ------------------------------------------------------------------------------------------------ */
 
-function transformToLis(obj){
+function transformToLis(obj) {
   // Solution code here...
-  return Object.entries(obj).map(([key, value]) => `<li>${key}: ${value}</li>`);
+  // return Object.entries(obj).map(([key, value]) => `<li>${key}: ${value}</li>`);
+  return Object.entries(obj).map((elm) => `<li>${elm[0]}: ${elm[1]}</li>`);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,12 +36,12 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
-  return input.reduce((acc, val) =>{
+  return input.reduce((acc, val) => {
     return acc += val.reduce((sum, elm) => {
-      elm ===target ? sum++ : acc;
+      elm === target ? sum++ : acc;
       return sum;
-    },0);
-  },0);
+    }, 0);
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,12 +56,12 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
-  return input.reduce((sum, val) =>{
+  return input.reduce((sum, val) => {
     return sum += val.reduce((acc, elm) => {
       acc += elm;
       return acc;
-    },0);
-  },0);
+    }, 0);
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -77,7 +78,7 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
-  let filtered = input.map(elm => elm.filter(num => (typeof(num) === 'number') && num%5===0));
+  let filtered = input.map(elm => elm.filter(num => (typeof (num) === 'number') && num % 5 === 0));
   return filtered.map(elm => elm.map(num => Math.pow(2, num)));
 };
 
@@ -145,12 +146,12 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
-  return data.filter(key=>key.gender==='male'||key.gender==='female').reduce((acc, elm, i)=>{
-    const len = data.filter(key=>key.gender==='male'||key.gender==='female').length;
-    if(i < len - 1){
+  return data.filter(key => key.gender === 'male' || key.gender === 'female').reduce((acc, elm, i) => {
+    const len = data.filter(key => key.gender === 'male' || key.gender === 'female').length;
+    if (i < len - 1) {
       return acc = acc + elm.name + ' and ';
-    }else{return acc += elm.name;}
-  },'');
+    } else { return acc += elm.name; }
+  }, '');
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 
@@ -160,8 +161,8 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
-  let res = data.reduce((acc, elm)=>{
-    if(acc.height < elm.height){acc = elm;}
+  let res = data.reduce((acc, elm) => {
+    if (acc.height < elm.height) { acc = elm; }
     return acc;
   });
   return res.name;
@@ -180,8 +181,8 @@ Run your tests from the console: jest challenges-10.test.js
 
 describe('Testing challenge 1', () => {
   test('It should return a list of key value pairs inside of li tags', () => {
-    expect(transformToLis({name: 'bob', age: 32})[0]).toStrictEqual(`<li>name: bob</li>`);
-    expect(transformToLis({name: 'bob', age: 32})[1]).toStrictEqual(`<li>age: 32</li>`);
+    expect(transformToLis({ name: 'bob', age: 32 })[0]).toStrictEqual(`<li>name: bob</li>`);
+    expect(transformToLis({ name: 'bob', age: 32 })[1]).toStrictEqual(`<li>age: 32</li>`);
     expect(transformToLis({})).toStrictEqual([]);
   });
 });

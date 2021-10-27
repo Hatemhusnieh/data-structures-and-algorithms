@@ -27,8 +27,8 @@ let starWarsPeople = [
 const sortStarWarsCharacters = (starWarsArr) => {
   // Solution code here...
   starWarsArr.sort((a, b) => {
-    if(parseInt(a.height) > parseInt(b.height)){return -1;}
-    if(parseInt(a.height) < parseInt(b.height)){return 1;}
+    if (parseInt(a.height) > parseInt(b.height)) { return -1; }
+    if (parseInt(a.height) < parseInt(b.height)) { return 1; }
     return 0;
   });
   return starWarsArr;
@@ -37,12 +37,12 @@ const sortStarWarsCharacters = (starWarsArr) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named removeThree that takes an index and an array. The function should removes three items in the array starting with the value at the index. 
+Write a function named removeThree that takes an index and an array. The function should removes three items in the array starting with the value at the index.
 ------------------------------------------------------------------------------------------------ */
 
 const removeThree = (idx, arr) => {
   // Solution code here...
-  arr.splice(idx,3);
+  arr.splice(idx, 3);
   return arr;
 };
 
@@ -73,7 +73,7 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
-  for(let i=0; i<=str.length; i++){
+  for (let i = 0; i <= str.length; i++) {
     result[i] = str.slice(i);
   }
   return result;
@@ -137,9 +137,9 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
-  for(let i=0; i<recipe.ingredients.length; i++){
+  for (let i = 0; i < recipe.ingredients.length; i++) {
     let food = recipe.ingredients[i].slice(3).indexOf(' ');
-    result[i] = recipe.ingredients[i].slice(3).slice(food+1);
+    result[i] = recipe.ingredients[i].slice(3).slice(food + 1);
   }
   return result;
 };
@@ -155,7 +155,7 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
-  recipe.ingredients.forEach( elm =>{
+  recipe.ingredients.forEach(elm => {
     const arr = elm.split(' ');
     const list = arr.slice(2).join(' ');
     result.push(list);
@@ -176,7 +176,7 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
-  recipe.steps.forEach(elm =>{
+  recipe.steps.forEach(elm => {
     const word = elm.split(' ');
     result.push(word[0]);
   });
@@ -198,8 +198,8 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
-  for(let i=0; i<arr.length; i++){
-    if(arr[i] % 2 === 0){
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
       arr.splice(i, 1);
       i--;
     }
@@ -224,8 +224,8 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
-  if(numberOfCharacters < 0){return str;}
-  if(str.length < numberOfCharacters ) {return '';}
+  if (numberOfCharacters < 0) { return str; }
+  if (str.length < numberOfCharacters) { return ''; }
   return str.slice(0, -numberOfCharacters);
 };
 
@@ -240,7 +240,7 @@ const totalSumCSV = (str) => {
   let total = 0;
   // Solution code here...
   let nums = str.split(',');
-  nums.forEach(val =>{
+  nums.forEach(val => {
     total += Number(val);
   });
   return total;
@@ -259,8 +259,8 @@ const removeVowels = (str) => {
   // Solution code here...
   let newStr = str.split('');
   const vowels = ['a', 'e', 'i', 'o', 'u'];
-  for(let i=0; i<newStr.length; i++){
-    if(vowels.includes(newStr[i])){
+  for (let i = 0; i < newStr.length; i++) {
+    if (vowels.includes(newStr[i])) {
       newStr.splice(i, 1);
       i--;
     }
@@ -284,8 +284,8 @@ const extractVowels = (str) => {
   let arrVows = [];
   const vowels = ['a', 'e', 'i', 'o', 'u'];
   let strArr = str.split('');
-  for(let i=0; i<strArr.length; i++){
-    if(vowels.includes(strArr[i])){
+  for (let i = 0; i < strArr.length; i++) {
+    if (vowels.includes(strArr[i])) {
       arrVows.push(strArr[i]);
       strArr.splice(i, 1);
       i--;
@@ -311,7 +311,7 @@ describe('Testing challenge 1', () => {
   test('It should sort the star wars characters by height from tallest to shortest', () => {
     expect(sortStarWarsCharacters(starWarsPeople)[0]['name']).toStrictEqual('Luke Skywalker');
     expect(sortStarWarsCharacters(starWarsPeople)[2]['height']).toStrictEqual('96');
-  })
+  });
 });
 
 describe('Testing challenge 2', () => {

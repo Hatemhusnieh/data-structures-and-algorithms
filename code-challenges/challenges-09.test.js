@@ -184,12 +184,12 @@ Write a function named totalCharacters that takes in an array and returns the nu
 
 const totalCharacters = (arr) => {
   // Solution code here...
-  return arr.reduce((acc, elm) =>{
-    acc++;
-    if(elm.spouse !== null){acc++;}
-    if(elm.children){acc += elm.children.length;}
+  return arr.reduce((acc, elm) => {
+    if (elm.name) acc++;
+    if (elm.spouse) acc++;
+    if (elm.children) acc += elm.children.length;
     return acc;
-  },0);
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -205,11 +205,11 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 const houseSize = (arr) => {
   const sizes = [];
   // Solution code here...
-  for(let i=0; i< arr.length; i++){
+  for (let i = 0; i < arr.length; i++) {
     let obj = new Object;
     let members = 1;
-    if(arr[i].spouse !== null){members++;}
-    if(arr[i].children){members += arr[i].children.length;}
+    if (arr[i].spouse !== null) { members++; }
+    if (arr[i].children) { members += arr[i].children.length; }
     obj.house = arr[i].house;
     obj.members = members;
     sizes.push(obj);
@@ -238,11 +238,11 @@ const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 const houseSurvivors = (arr) => {
   const survivors = [];
   // Solution code here...
-  for(let i=0; i< arr.length; i++){
+  for (let i = 0; i < arr.length; i++) {
     let obj = new Object;
     let members = 1;
-    if(arr[i].spouse !== null && !deceasedSpouses.includes(arr[i].spouse)){members++;}
-    if(arr[i].children){members += arr[i].children.length;}
+    if (arr[i].spouse !== null && !deceasedSpouses.includes(arr[i].spouse)) { members++; }
+    if (arr[i].children) { members += arr[i].children.length; }
     obj.house = arr[i].house;
     obj.members = members;
     survivors.push(obj);
